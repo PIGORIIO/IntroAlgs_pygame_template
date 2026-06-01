@@ -1,15 +1,10 @@
 # Nome do Jogo
 
-Projeto final da disciplina de Introdução a Algoritmos/Programação, desenvolvido com Python e Pygame.
-
-Este repositório é um template para os grupos da disciplina. A proposta é começar com uma base funcional e evoluir o jogo ao longo do semestre.
+Intergalactic Race - Um conflito além do terrestre
 
 ## Integrantes do grupo
 
-- Nome do integrante 1
-- Nome do integrante 2
-- Nome do integrante 3
-- Nome do integrante 4
+- Pedro Gregório Fernandes Pontes
 
 ## Estrutura do projeto
 
@@ -21,44 +16,28 @@ Este repositório é um template para os grupos da disciplina. A proposta é com
 - `docs/`: documentação do projeto, incluindo proposta inicial.
 
 ## Descrição do jogo
+ > O jogo consiste em controlar uma espaçonave, humana ou alienígena, enquanto o jogador enfrenta uma jornada repleta de desafios espaciais. Ao longo do percurso, será necessário desviar de meteoros e combater inimigos para sobreviver o maior tempo possível. A pontuação é baseada na distância percorrida antes que todas as três vidas disponíveis sejam perdidas. Durante a aventura, o jogador poderá encontrar poderosos chefes (bosses), que exigirão estratégia e habilidade para serem derrotados, além de upgrades que aprimoram a nave e aumentam suas chances de alcançar distâncias cada vez maiores.
 
-Descreva brevemente a ideia principal do jogo.
-
-Exemplo:
-
-> O jogo consiste em controlar um personagem que deve coletar moedas e evitar obstáculos. O jogador ganha pontos ao coletar itens e perde vidas ao colidir com obstáculos. A partida termina quando o tempo acaba ou quando o jogador perde todas as vidas.
 
 ## Objetivo do jogador
 
-Explique o que o jogador precisa fazer para vencer ou avançar no jogo.
-
-Exemplo:
-
-> O objetivo é coletar a maior quantidade possível de itens antes que o tempo acabe, evitando colisões com os obstáculos.
+> Percorrer a maior distância possível no espaço, evitando perigos e derrotando inimigos, até que todas as vidas da espaçonave sejam perdidas.
 
 ## Regras do jogo
 
-Liste as principais regras do jogo.
-
-Exemplo:
-
-- O jogador se movimenta usando as setas do teclado.
-- Cada item coletado aumenta a pontuação.
-- Colidir com um obstáculo reduz a quantidade de vidas.
-- A partida termina quando o jogador perde todas as vidas ou quando o tempo acaba.
+- O jogador se movimenta usando as setas do teclado e solta uma habilidade com a tecla espaço.
+- Colidir com um obstáculo, inimigo ou habilidades do inimigo reduz a quantidade de vidas.
+- A partida termina quando o jogador perde todas as vidas.
 
 ## Controles
-
-Informe as teclas ou comandos utilizados no jogo.
-
-Exemplo:
 
 - Seta para cima: mover para cima
 - Seta para baixo: mover para baixo
 - Seta para esquerda: mover para esquerda
 - Seta para direita: mover para direita
-- Espaço: realizar ação
+- Espaço: ativar a habilidade
 - ESC: sair do jogo
+- Enter: Esquivar na direção em que a seta está apontando.
 
 ## Como executar o projeto
 
