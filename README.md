@@ -5,6 +5,8 @@ Intergalactic Race - Um conflito além do terrestre
 ## Integrantes do grupo
 
 - Pedro Gregório Fernandes Pontes
+- Igor Félix Flaviano
+- Carlos Eduardo Farias de Oliveira
 
 ## Estrutura do projeto
 
@@ -16,12 +18,11 @@ Intergalactic Race - Um conflito além do terrestre
 - `docs/`: documentação do projeto, incluindo proposta inicial.
 
 ## Descrição do jogo
- > O jogo consiste em controlar uma espaçonave, humana ou alienígena, enquanto o jogador enfrenta uma jornada repleta de desafios espaciais. Ao longo do percurso, será necessário desviar de meteoros e combater inimigos para sobreviver o maior tempo possível. A pontuação é baseada na distância percorrida antes que todas as três vidas disponíveis sejam perdidas. Durante a aventura, o jogador poderá encontrar poderosos chefes (bosses), que exigirão estratégia e habilidade para serem derrotados, além de upgrades que aprimoram a nave e aumentam suas chances de alcançar distâncias cada vez maiores.
-
+ > O jogo consiste em controlar uma espaçonave, humana ou alienígena, enquanto o jogador enfrenta uma jornada repleta de desafios espaciais. Ao longo do percurso, será necessário desviar de meteoros e inimigos para sobreviver o maior tempo possível. A pontuação é baseada na distância percorrida antes que todas as três vidas disponíveis sejam perdidas. 
 
 ## Objetivo do jogador
 
-> Percorrer a maior distância possível no espaço, evitando perigos e derrotando inimigos, até que todas as vidas da espaçonave sejam perdidas.
+> Percorrer a maior distância possível no espaço, evitando perigos e inimigos, pra conseguir desbloquear novos mapas e personagens
 
 ## Regras do jogo
 

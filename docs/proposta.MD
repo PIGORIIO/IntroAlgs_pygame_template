@@ -1,202 +1,111 @@
 # Proposta Inicial do Jogo
 
-Este documento deve ser preenchido pelo grupo na Semana 1 do projeto.
-
-A proposta deve apresentar uma ideia simples, clara e viável para ser desenvolvida com Python e Pygame dentro do prazo disponível.
+A ideia principal é criar um jogo no estilo **Spacewar**, mas em vez de enfrentar e destruir inimigos, o objetivo do jogador será **desviar e escapar** de ameaças como naves inimigas, meteoros e asteroides. Para sobreviver, o jogador poderá utilizar manobras de esquiva e, dependendo do personagem escolhido — seja humano ou alienígena — terá acesso a uma habilidade exclusiva que oferece diferentes vantagens durante o jogo.
 
 ## 1. Nome provisório do jogo
 
-Escreva aqui o nome provisório do jogo.
-
-Exemplo:
-
-> Corrida dos Obstáculos
+Intergalactic Race - Um conflito além do terrestre
 
 ## 2. Integrantes do grupo
 
 Liste os integrantes do grupo.
 
-- Nome 1:
-- Nome 2:
-- Nome 3:
-- Nome 4:
+- Nome 1: Pedro Gregório Fernandes Pontes
+- Nome 2: Igor Félix Flaviano
+- Nome 3: Carlos Eduardo Farias de Oliveira
+- Nome 4: .....
 
 ## 3. Tipo de jogo
 
-Indique o tipo de jogo que será desenvolvido.
-
-Exemplos:
-
-- jogo de desviar de obstáculos;
-- jogo de coleta de itens;
-- labirinto simples;
-- jogo de perguntas e respostas;
-- jogo de memória;
-- Pong;
-- Snake;
-- Breakout;
-- nave desviando de meteoros;
-- corrida simples com obstáculos;
-- jogo de clique rápido;
-- jogo de sobrevivência simples.
-
 Tipo escolhido pelo grupo:
 
-> Escreva aqui.
+> Jogo de sobrevivência espacial com foco em movimentação, esquiva e progressão por pontuação.
 
 ## 4. Descrição geral do jogo
 
-Explique, em poucas linhas, como o jogo funcionará.
+- O que aparece na tela? 
+>    + Na tela aparece a nave escolhida pelo jogador, depois de um tempo meteoros e inimigos vão aparecendo
 
-Procure responder:
-
-- O que aparece na tela?
 - O que o jogador controla?
+>    + O jogador controla uma espaçonave, podendo ser uma humana ou uma alienigena
+
 - O que o jogador precisa fazer?
+>    + Desviar de meteoros e ataques inimigos
+
 - Quais desafios aparecem durante a partida?
-
-Descrição:
-
-> Escreva aqui.
+>    + Com o passar do tempo, vai aumentando a quantidade de inimigos e meteoros para desviar
 
 ## 5. Objetivo do jogador
 
-Explique qual é o objetivo principal do jogador.
-
-Exemplos:
-
-- coletar o maior número possível de itens;
-- sobreviver pelo maior tempo possível;
-- chegar até o final do labirinto;
-- acertar alvos;
-- responder perguntas corretamente;
-- evitar obstáculos;
-- quebrar todos os blocos.
-
-Objetivo:
-
-> Escreva aqui.
+> Percorrer a maior distância possível no espaço, evitando perigos e inimigos, pra conseguir desbloquear novos mapas e personagens.
 
 ## 6. Regras principais
 
-Liste as principais regras do jogo.
-
-Exemplo:
-
-- O jogador começa com 3 vidas.
-- Cada moeda coletada vale 10 pontos.
-- Cada colisão com obstáculo remove 1 vida.
-- A partida termina quando as vidas chegam a zero.
-- O jogador vence se alcançar 100 pontos.
-
 Regras do grupo:
 
-- Regra 1:
-- Regra 2:
-- Regra 3:
-- Regra 4:
-- Regra 5:
+>- Regra 1: O jogador começa com 3 vidas e Cada colisão com obstáculo(meteoro, asteroide e inimigo) remove 1 vida.
+>- Regra 2: O jogador Ganha/ desbloquea uma nova fase se conseguir fazer 125000 pontos
+>- Regra 3: O jogador se movimenta usando as setas do teclado, solta uma habilidade com a tecla espaço e esquiva com Enter.
+>- Regra 4: A partida termina quando o jogador perde todas as vidas ou clica no botão sair da fase.
 
 ## 7. Condição de vitória
 
-Explique como o jogador vence ou conclui o jogo.
-
-Exemplos:
-
-- atingir determinada pontuação;
-- chegar ao final da fase;
-- sobreviver até o tempo acabar;
-- responder uma quantidade mínima de perguntas;
-- quebrar todos os blocos.
-
 Condição de vitória:
 
-> Escreva aqui.
+> Alcançar a pontuação necessária para desbloquear novas fases e conteúdos.
 
 ## 8. Condição de derrota ou encerramento
 
-Explique como o jogador perde ou quando a partida termina.
-
-Exemplos:
-
-- perder todas as vidas;
-- acabar o tempo;
-- colidir com determinado obstáculo;
-- errar muitas perguntas;
-- deixar a bola cair, no caso de Breakout ou Pong.
-
 Condição de derrota ou encerramento:
 
-> Escreva aqui.
+> Perder todas as vidas antes de atingir a pontuação desejada.
 
 ## 9. Elementos previstos no jogo
 
-Descreva os principais elementos que farão parte do jogo.
+**Personagens**: Humanos e alienígenas com habilidades especiais únicas.
+**Nave Espacial**: Controlada pelo jogador para se mover e escapar dos perigos.
+**Inimigos**: Naves que perseguem o jogador e devem ser evitadas.
+**Meteoros e Asteroides**: Obstáculos espalhados pelo cenário que podem causar colisões.
+**Esquiva**: Movimento rápido que ajuda o jogador a escapar de ameaças.
+**Cenário Espacial**: Ambiente onde o jogo acontece, com estrelas, planetas e campos de asteroides.
+**Pontuação**: Aumenta conforme o jogador sobrevive e coleta itens.
 
 ## Jogador ou elemento principal
 
-Exemplo:
-
-> Um personagem controlado pelas setas do teclado.
-
 Descrição:
 
-> Escreva aqui.
+> Uma espaçonave humana ou alienigena controlado pelas setas do teclado.
 
 ## Obstáculos, inimigos ou desafios
 
-Exemplo:
+Descrição:
 
 > Obstáculos aparecem em posições aleatórias e devem ser evitados.
 
-Descrição:
-
-> Escreva aqui.
-
 ## Itens, alvos ou objetos de interação
 
-Exemplo:
-
-> Moedas aparecem na tela e aumentam a pontuação quando coletadas.
-
 Descrição:
 
-> Escreva aqui.
+> Meteoros, asteroides e naves inimigas
 
 ## Pontuação, vidas, tempo ou progresso
 
-Exemplo:
-
-> O jogador começa com 3 vidas e ganha 10 pontos por item coletado.
-
 Descrição:
 
-> Escreva aqui.
+> O jogador começa com 3 vidas e vai aumentando os pontos de 5 em 5 com o passar do tempo.
 
 ## 10. Controles previstos
 
-Informe os comandos que serão utilizados pelo jogador.
-
-Exemplo:
-
-- Seta para cima: mover para cima
-- Seta para baixo: mover para baixo
-- Seta para esquerda: mover para esquerda
-- Seta para direita: mover para direita
-- Espaço: realizar ação
-- ESC: sair do jogo
-
-Controles do grupo:
-
-- Tecla/comando:
-- Tecla/comando:
-- Tecla/comando:
+- Tecla/comando: Seta para cima: mover para cima
+- Tecla/comando: Seta para baixo: mover para baixo
+- Tecla/comando: Seta para esquerda: mover para esquerda
+- Tecla/comando: Seta para direita: mover para direita
+- Tecla/comando: Espaço: soltar a habilidade especial
+- Tecla/comando: ESC: sair do jogo
 
 ## 11. Organização inicial do código
 
-Explique como o grupo pretende organizar o código.
-
-Exemplo:
+Organização planejada:
 
 - `main.py`: inicia o jogo;
 - `src/jogo.py`: contém o loop principal;
@@ -204,83 +113,39 @@ Exemplo:
 - `src/funcoes.py`: contém funções auxiliares;
 - `src/dados.py`: contém funções de leitura e escrita de arquivos.
 
-Organização planejada:
-
-> Escreva aqui.
-
 
 ## 12. Recursos externos previstos
 
-Informe se o grupo pretende utilizar imagens, sons, fontes, tutoriais ou códigos externos.
-
-Exemplo:
-
-- imagens obtidas de banco gratuito;
-- sons gratuitos;
-- tutorial usado apenas como referência;
-- fonte personalizada.
-
-Recursos previstos:
-
-> Escreva aqui.
-
-Caso não pretenda utilizar recursos externos, escreva:
-
-> Não pretendemos utilizar recursos externos.
+> imagens obtidas de banco gratuito;
+> sons gratuitos;
+> tutorial usado apenas como referência;
+> fonte personalizada.
 
 ## 13. Principais dificuldades esperadas
 
-Liste as dificuldades que o grupo acredita que poderá enfrentar.
-
-Exemplos:
-
-- movimentação do jogador;
-- colisão entre objetos;
-- controle de tempo;
-- criação do ranking;
-- organização do código;
-- uso do GitHub;
-- testes;
-- exibição de textos na tela.
-
 Dificuldades previstas:
 
-- Dificuldade 1:
-- Dificuldade 2:
-- Dificuldade 3:
+>- 1. Fazer os objetos se moverem corretamente : Em um Spacewar, a nave normalmente possui inércia, então ela continua se movendo mesmo sem o jogador pressionar uma tecla.
+
+>- 2. Detectar colisões: Saber quando um tiro, asteroide, meteoro ou inimigo atinge a nave do jogador e diminuir as vidas.
+
+>- 3. Sistema de habilidades especiais e esquiva: Saber cronometrar o tempo em que poderá e não poderá usar a habilidade, contando que cada personagem/espaçonave terá sua própria peculiaridade e esquivas.
+
+>- 4. Loop principal do jogo: Entender o ciclo do jogo muito bem
 
 ## 14. Escopo mínimo para a entrega final
 
-Descreva qual será a versão mínima aceitável do jogo.
-
-Esta seção é importante para evitar que o grupo escolha uma ideia grande demais.
-
-Exemplo:
+Escopo mínimo:
 
 > A versão mínima do jogo terá um personagem controlado pelo teclado, obstáculos aparecendo na tela, sistema de vidas, sistema de pontuação e tela de fim de jogo.
 
-Escopo mínimo:
-
-> Escreva aqui.
-
 ## 15. Possíveis melhorias, caso haja tempo
-
-Liste funcionalidades extras que o grupo poderá implementar se conseguir concluir o escopo mínimo.
-
-Exemplos:
-
-- tela inicial;
-- sons;
-- fases;
-- aumento de dificuldade;
-- ranking;
-- animações;
-- novos tipos de obstáculos;
-- diferentes personagens;
-- menu de pausa.
 
 Melhorias possíveis:
 
-- Melhoria 1:
-- Melhoria 2:
-- Melhoria 3:
+- Melhoria 1: ranking;
+- Melhoria 2: diferentes personagens;
+- Melhoria 3: menu de pausa.
+- Melhoria 4: fases;
+- Melhoria 5: aumento de dificuldade;
+- Melhoria 6: Sons;
