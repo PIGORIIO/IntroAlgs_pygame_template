@@ -1,143 +1,178 @@
 import pygame
+from pygame.locals import *
+import random
 
-from src.config import (
-    LARGURA_TELA,
-    ALTURA_TELA,
-    FPS,
-    TITULO_JOGO,
-    CINZA,
-    CAMINHO_RECORDE,
-    CAMINHO_SPRITES,
-)
+# Inicializa o Pygame
+pygame.init()
 
-from src.funcoes import (
-    calcular_pontos,
-    jogador_perdeu,
-    limitar_valor,
-    verificar_colisao,
-    tomar_dano,
-)
-from src.sprites import pegar_sprite
-from src.dados import (
-    salvar_recorde,
-    carregar_recorde,
-)
+# Define FPS
+clock = pygame.time.Clock()
+fps = 60
 
+screen_width = 700
+screen_height = 600
 
-def executar_jogo():
-    """Executa o loop principal do jogo e controla estado, colisões e pontuação."""
-    pygame.init()
-    
+screen = pygame.display.set_mode((screen_width, screen_height))
+pygame.display.set_caption('Intergalactic Race - Um conflito além do terrestre')
 
-    tela = pygame.display.set_mode((LARGURA_TELA, ALTURA_TELA))
-    pygame.display.set_caption(TITULO_JOGO)
+# Define Game Variables
+rows = 5
+cols = 5
+alien_direction = 1
 
-    relogio = pygame.time.Clock()
-    rodando = True
+# Define Colours
+red = (255, 0, 0)
+green = (0, 255, 0)
 
-    # 1. Carregando as imagens recortadas do Spritesheet
+# load image
+bg = pygame.image.load("assets/imagens/Space_Pixel2.png")
 
 
-    # Jogador: usando tamanho 110x110 para capturar o quadrado perfeitamente
-    player_image = pegar_sprite(CAMINHO_SPRITES, x=110, y=120, width=190, height=190, scale=0.5)
+def draw_bg():
+    screen.blit(bg, (0, 0))
 
-    # Gema pequena: usando tamanho 64x64
-    gem_image    = pegar_sprite(CAMINHO_SPRITES, x=900, y=690, width=200, height=200, scale=0.5)
 
-    # Morcego: usando tamanho 180x120 por causa das asas abertas
-    bat_image    = pegar_sprite(CAMINHO_SPRITES, x=905, y=1060, width=200, height=130, scale=0.5)
-    
-    # 2. Criando a estrutura de Sprites usando Dicionários
-    jogador = {
-        "imagem": player_image,
-        "rect": player_image.get_rect(topleft=(100, 100))
-    }
+# Create Spaceship Class
+class Spaceship(pygame.sprite.Sprite):
+    def __init__(self, x, y, health):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load("assets/imagens/Ship_1.png")
+        self.rect = self.image.get_rect()
+        self.rect.center = [x, y]
+        self.health_start = health
+        self.health_remaining = health
+        self.last_shot = pygame.time.get_ticks()
 
-    gema = {
-        "imagem": gem_image,
-        "rect": gem_image.get_rect(topleft=(500, 300))
-    }
-    
-    inimigo = {
-        "imagem": bat_image,
-        "rect": bat_image.get_rect(topleft=(200, 500))
-    }
+    def update(self):
+        speed = 8
+        cooldown = 600
 
-    velocidade = 5
-    pontos = 0
-    vidas = 3
-    recorde = carregar_recorde(CAMINHO_RECORDE)
+        key = pygame.key.get_pressed()
 
-    # Loop principal: processa entrada, atualiza estado e renderiza a cena.
-    while rodando:
-        relogio.tick(FPS)
+        if key[pygame.K_LEFT] and self.rect.left > 0:
+            self.rect.x -= speed
 
-        for evento in pygame.event.get():
-            if evento.type == pygame.QUIT:
-                rodando = False
+        if key[pygame.K_RIGHT] and self.rect.right < screen_width:
+            self.rect.x += speed
 
-        teclas = pygame.key.get_pressed()
+        time_now = pygame.time.get_ticks()
 
-        # Movimentação alterando direto os eixos X e Y do retângulo do jogador
-        if teclas[pygame.K_LEFT]:
-            jogador["rect"].x -= velocidade
-        if teclas[pygame.K_RIGHT]:
-            jogador["rect"].x += velocidade
-        if teclas[pygame.K_UP]:
-            jogador["rect"].y -= velocidade
-        if teclas[pygame.K_DOWN]:
-            jogador["rect"].y += velocidade
+        if key[pygame.K_SPACE] and time_now - self.last_shot > cooldown:
+            bullet = Bullets(self.rect.centerx, self.rect.top)
+            bullet_group.add(bullet)
+            self.last_shot = time_now
 
-        # Limitando o jogador dentro das bordas da tela usando as propriedades do Rect
-        jogador["rect"].x = limitar_valor(jogador["rect"].x, 0, LARGURA_TELA - jogador["rect"].width)
-        jogador["rect"].y = limitar_valor(jogador["rect"].y, 0, ALTURA_TELA - jogador["rect"].height)
-
-        # Verificação de colisão com a Gema (antigo 'item')
-        if verificar_colisao(jogador["rect"], gema["rect"]):
-            pontos = calcular_pontos(pontos, 10)
-
-            # Move a gema de lugar ao coletar
-            gema["rect"].x += 80
-            gema["rect"].y += 50
-
-            # Se a gema sair da tela, volta para uma posição segura
-            if gema["rect"].x > LARGURA_TELA - gema["rect"].width:
-                gema["rect"].x = 50
-            if gema["rect"].y > ALTURA_TELA - gema["rect"].height:
-                gema["rect"].y = 50
-
-        # Verificação de colisão com o Inimigo
-        if verificar_colisao(jogador["rect"], inimigo["rect"]):
-            vidas = tomar_dano(vidas, 1)
-
-            # Afasta o inimigo ao colidir
-            inimigo["rect"].x += 80
-            inimigo["rect"].y += 50
-
-            if inimigo["rect"].x > LARGURA_TELA - inimigo["rect"].width:
-                inimigo["rect"].x = 50
-            if inimigo["rect"].y > ALTURA_TELA - inimigo["rect"].height:
-                inimigo["rect"].y = 50
-
-        # Regras de fim de jogo e recorde
-        if jogador_perdeu(vidas):
-            rodando = False
-
-        if pontos > recorde:
-            recorde = pontos
-            salvar_recorde(CAMINHO_RECORDE, recorde)
-
-        pygame.display.set_caption(
-            f"{TITULO_JOGO} | Pontos: {pontos} | Recorde: {recorde} | Vidas: {vidas}"
+        pygame.draw.rect(
+            screen,
+            red,
+            (self.rect.x, (self.rect.bottom + 10), self.rect.width, 15)
         )
 
-        tela.fill(CINZA)
+        if self.health_remaining > 0:
+            pygame.draw.rect(
+                screen,
+                green,
+                (
+                    self.rect.x,
+                    (self.rect.bottom + 10),
+                    int(self.rect.width * (self.health_remaining / self.health_start)),
+                    15
+                )
+            )
 
-        # Desenhando os elementos na tela passando a imagem e o rect de cada dicionário
-        tela.blit(gema["imagem"], gema["rect"])
-        tela.blit(inimigo["imagem"], inimigo["rect"])
-        tela.blit(jogador["imagem"], jogador["rect"])
 
-        pygame.display.flip()
+# Create Bullets Class
+class Bullets(pygame.sprite.Sprite):
+    def __init__(self, x, y):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load("assets/imagens/star_small.png")
+        self.rect = self.image.get_rect()
+        self.rect.center = [x, y]
 
-    pygame.quit()
+    def update(self):
+        self.rect.y -= 5
+        if self.rect.bottom < 0:
+            self.kill()
+
+
+# Create Aliens Class
+class Aliens(pygame.sprite.Sprite):
+    def __init__(self, x, y):
+        pygame.sprite.Sprite.__init__(self)
+
+        self.image = pygame.image.load(
+            "assets/imagens/Aliens" + str(random.randint(1, 5)) + ".png"
+        )
+
+        self.image = pygame.transform.scale(self.image, (50, 50))
+        self.rect = self.image.get_rect()
+        self.rect.center = [x, y]
+
+    def update(self):
+        pass
+
+
+# Create sprite groups
+spaceship_group = pygame.sprite.Group()
+bullet_group = pygame.sprite.Group()
+alien_group = pygame.sprite.Group()
+
+
+def create_aliens():
+    for row in range(rows):
+        for item in range(cols):
+            alien = Aliens(100 + item * 100, 40 + row * 70)
+            alien_group.add(alien)
+
+
+create_aliens()
+
+# Create Player
+spaceship = Spaceship(int(screen_width / 2), screen_height - 100, 3)
+spaceship_group.add(spaceship)
+
+run = True
+while run:
+
+    clock.tick(fps)
+
+    # Draw Background
+    draw_bg()
+
+    # Event Handler
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
+
+    # UPDATE
+    spaceship_group.update()
+    bullet_group.update()
+
+    # ALIEN MOVEMENT (CORRIGIDO E DENTRO DO LOOP)
+    move_down = False
+
+    for alien in alien_group:
+        if alien.rect.right >= screen_width and alien_direction == 1:
+            alien_direction = -1
+            move_down = True
+            break
+
+        if alien.rect.left <= 0 and alien_direction == -1:
+            alien_direction = 1
+            move_down = True
+            break
+
+    for alien in alien_group:
+        alien.rect.x += alien_direction * 2
+
+        if move_down:
+            alien.rect.y += 20
+
+    # DRAW
+    spaceship_group.draw(screen)
+    bullet_group.draw(screen)
+    alien_group.draw(screen)
+
+    pygame.display.update()
+
+pygame.quit()
